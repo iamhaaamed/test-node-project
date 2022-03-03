@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import moment from 'moment';
+
 import { Input } from './types';
 import { calculateCashIn, calculateJuridicalCashOut, calculateNaturalCashOut } from './utils/cash';
 

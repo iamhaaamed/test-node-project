@@ -19,6 +19,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "import/extensions": "off",
         "object-curly-newline": [
             "error",
             {

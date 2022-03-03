@@ -1,7 +1,9 @@
 import moment from 'moment';
-import CommissionTypeEnum from '../constants/commission';
-import { Input } from '../types';
-import { roundAmount } from './money';
+
+import { Input } from '@/types';
+import CommissionTypeEnum from '@/constants/commission';
+
+import { roundAmount } from './amount';
 
 const calculateCashIn = (amount: number) => {
   const commission = roundAmount(amount * CommissionTypeEnum.CASH_IN);

@@ -5,15 +5,14 @@ import { roundAmount } from './money';
 
 const calculateCashIn = (amount: number) => {
   const commission = roundAmount(amount * CommissionTypeEnum.CASH_IN);
-  console.log(commission > 5 ? 5 : commission);
+  return commission > 5 ? 5 : commission;
 };
 
 const calculateJuridicalCashOut = (amount: number) => {
   if (amount < 0.5) {
-    console.log(0);
-  } else {
-    console.log(roundAmount(amount * CommissionTypeEnum.CASH_OUT));
+    return 0;
   }
+  return roundAmount(amount * CommissionTypeEnum.CASH_OUT);
 };
 
 const calculateNaturalCashOut = (
@@ -28,12 +27,12 @@ const calculateNaturalCashOut = (
   const weeklyTransactionAmount = res.reduce((acc, cur) => acc + cur.operation.amount, 0);
 
   if (weeklyTransactionAmount <= 1000) {
-    console.log(0);
-  } else if (amount > 1000) {
-    console.log(roundAmount((amount - 1000) * CommissionTypeEnum.CASH_OUT));
-  } else {
-    console.log(roundAmount(amount * CommissionTypeEnum.CASH_OUT));
+    return 0;
   }
+  if (amount > 1000) {
+    return roundAmount((amount - 1000) * CommissionTypeEnum.CASH_OUT);
+  }
+  return roundAmount(amount * CommissionTypeEnum.CASH_OUT);
 };
 
 export { calculateCashIn, calculateJuridicalCashOut, calculateNaturalCashOut };
